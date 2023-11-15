@@ -1,0 +1,3 @@
+[submodule "sqlglot"]
+	path = sqlglot
+	url = git@github.com:akash17mittal/sqlglot.git
