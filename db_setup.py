@@ -62,7 +62,12 @@ class DBTableSetup(object):
       else:
         c_type = dtype
       table_columns.append((column, c_type, column in primary_key_cols))
-    loop = asyncio.get_event_loop()
+
+    try:
+      loop = asyncio.get_event_loop()
+    except Exception as e:
+      loop = asyncio.new_event_loop()
+      asyncio.set_event_loop(loop)
     loop.run_until_complete(self._create_table(table_name, table_columns))
     loop.run_until_complete(self._insert_data_in_table(table_name, blob_data))
     loop.close()
