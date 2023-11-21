@@ -1,2 +1,2 @@
 DB_URL = 'sqlite+aiosqlite://'
-DB_NAME = 'ssql_test.sqlite'
+DB_NAME = 'data/ssql_test.sqlite'

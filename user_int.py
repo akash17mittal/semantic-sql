@@ -5,13 +5,14 @@ import streamlit as st
 import pandas as pd
 from db_setup import DBTableSetup
 from query_execution import QueryExecution
+from text_to_image_semantic_search import create_and_save_faiss_index_with_ids
 from constants import *
 
 logging.basicConfig(level=logging.DEBUG)
 
 if __name__ == '__main__':
 
-  data_files = ["data/amazon_reviews.csv"]
+  data_files = ["data/objects.csv"]
 
   # UI Elements
   st.set_page_config(layout="wide", page_title="Semantic SQL")
@@ -23,11 +24,14 @@ if __name__ == '__main__':
   if st.sidebar.button("Setup DB"):
     base_table_setup = DBTableSetup(f"{DB_URL}/{DB_NAME}")
     d = pd.read_csv(selectedData)
-    base_table_setup.insert_blob_data("reviews", d, ["review_id"])
+    base_table_setup.insert_blob_data("objects", d, ["id", "object_id"])
+    create_and_save_faiss_index_with_ids("data/embeddings-instances.pt", "data/imageIds-instances.pt", index_path="data/index", ids_save_path="data/index_ids.npy")
 
   if st.sidebar.button("Reset Database", key="db_reset"):
     # delete everything in database
     os.remove(DB_NAME)
+    os.remove("data/index")
+    os.remove("data/index_ids.npy")
     st.session_state["curr_executing"] = False
 
   if st.sidebar.button("New Query", key="new_query"):
@@ -41,7 +45,7 @@ if __name__ == '__main__':
     st.session_state["results_ready"] = False
 
   if "curr_query" not in st.session_state:
-    st.session_state["curr_query"] = "SELECT * from a SEMANTIC 'car is red'"
+    st.session_state["curr_query"] = "SELECT * from objects SEMANTIC 'car is red'"
 
   with col1:
     col1.header("Query the Data")
