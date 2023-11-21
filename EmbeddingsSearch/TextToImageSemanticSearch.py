@@ -78,6 +78,30 @@ class TextToImageSemanticSearcher:
 
         self.tokenizer = AutoTokenizer.from_pretrained("openai/clip-vit-base-patch32")
         self.model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
+
+        self.total_num_entries = self.index.ntotal
+
+    def generate_query_embedding(self, query):
+        inputs = self.tokenizer([query], padding=True, return_tensors="pt")
+        text_features = self.model.get_text_features(**inputs)
+        query_embedding = text_features.detach().numpy()  
+        return query_embedding
+
+    # generates the scores for all images in the index. returns all the image ids and the corresponding scores
+    def generate_all_image_scores(self, query):
+        query_embedding = self.generate_query_embedding(query)
+        faiss.normalize_L2(query_embedding)
+
+        distances, indices = self.index.search(query_embedding, self.total_num_entries)
+        distances = distances.flatten()
+        indices = indices.flatten()
+        image_ids = [self.ids[idx] for idx in indices]
+        return image_ids, distances
+    
+    def find_images_above_threshold(self, query, score_threshold):
+        image_ids, scores = self.generate_all_image_scores(query)
+        above_threshold = np.where(scores > score_threshold)
+        return image_ids[above_threshold]
     
     def sample_images_at_percentile(self, query, percentile=1, k=1):
         """
@@ -90,36 +114,23 @@ class TextToImageSemanticSearcher:
         :return: k images ids of the sampled images at that percentile.
         """
         # Normalize the query
-        inputs = self.tokenizer([query], padding=True, return_tensors="pt")
-        text_features = self.model.get_text_features(**inputs)
-        query_embedding = text_features.detach().numpy()
-
-        faiss.normalize_L2(query_embedding)
-
-        # Retrieve distances and indices for all entries
-        total_num_entries = self.index.ntotal
-        distances, indices = self.index.search(query_embedding, total_num_entries)
-
-        # Flatten the indices array for easier processing
-        distances = distances.flatten()
-        indices = indices.flatten()
+        image_ids, _ = self.generate_all_image_scores(query)
 
         # Calculate the target index for the specified percentile
-        target_index = int((1 - percentile) * total_num_entries)
+        target_index = int((1 - percentile) * self.total_num_entries)
 
         # Determine start and end indices for sampling
         start_index = max(0, target_index - k // 2)
-        end_index = min(total_num_entries, start_index + k)
+        end_index = min(self.total_num_entries, start_index + k)
 
         # Adjust start_index if end_index exceeds total_num_entries
-        if end_index == total_num_entries:
+        if end_index == self.total_num_entries:
             start_index = max(0, end_index - k)
 
         # Sample k indices around the specified percentile
-        sampled_indices = indices[start_index:end_index]
+        sampled_image_ids = image_ids[start_index:end_index]
 
         # get the actual image ids from the sampled indices
-        sampled_image_ids = [self.ids[idx] for idx in sampled_indices]
         return sampled_image_ids
 
     def get_image(self, image_id, data_dir, index_size=12):
