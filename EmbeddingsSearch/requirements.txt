@@ -1,0 +1,5 @@
+numpy
+matplotlib
+transformers
+faiss-gpu
+torch
