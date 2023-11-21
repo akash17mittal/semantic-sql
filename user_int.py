@@ -37,6 +37,7 @@ if __name__ == '__main__':
   if st.sidebar.button("New Query", key="new_query"):
     # delete everything in database
     st.session_state["curr_executing"] = False
+    st.session_state["results_ready"] = False
 
   if "curr_executing" not in st.session_state:
     st.session_state["curr_executing"] = False
@@ -45,35 +46,38 @@ if __name__ == '__main__':
     st.session_state["results_ready"] = False
 
   if "curr_query" not in st.session_state:
-    st.session_state["curr_query"] = "SELECT * from objects SEMANTIC 'car is red'"
+    st.session_state["curr_query"] = "SELECT * from objects SEMANTIC 'red car'"
 
   with col1:
     col1.header("Query the Data")
-    input_query = st.text_area('Type SQL query here', st.session_state["curr_query"], 150)
+    input_query = st.text_area('Type SQL query here', st.session_state["curr_query"], 300)
     if st.button("Execute query"):
       st.session_state.curr_executing = True
       st.session_state.results_ready = False
       st.session_state["curr_query"] = input_query
       st.session_state["query_execution"] = QueryExecution(input_query)
+      if st.session_state["query_execution"].execution_complete:
+        st.session_state["results_ready"] = True
 
   with col2:
     col2.header("User in the loop feedback")
 
   if st.session_state.curr_executing:
     with col2:
-      image_for_user_feedback = st.session_state["query_execution"].img_selection.get_next_image()
-      if image_for_user_feedback:
-        st.image(image_for_user_feedback, use_column_width=True)
-        col_n_1, col_n_2 = st.columns([1, 1])
-        with col_n_1:
-          if st.button("Satisfies?", key="yes", use_container_width=True):
-            st.session_state["query_execution"].img_selection.update_user_feedback()
-        with col_n_2:
-          if st.button("Does NOT Satisfy?", key="no", use_container_width=True):
-            st.session_state["query_execution"].img_selection.update_user_feedback()
+      if not st.session_state["query_execution"].execution_complete:
+        image_for_user_feedback = st.session_state["query_execution"].img_selection.get_next_image()
+        if image_for_user_feedback:
+          st.image(image_for_user_feedback, use_column_width=True)
+          col_n_1, col_n_2 = st.columns([1, 1])
+          with col_n_1:
+            if st.button("Satisfies?", key="yes", use_container_width=True):
+              st.session_state["query_execution"].img_selection.update_user_feedback()
+          with col_n_2:
+            if st.button("Does NOT Satisfy?", key="no", use_container_width=True):
+              st.session_state["query_execution"].img_selection.update_user_feedback()
 
   with col3:
     col3.header("Query Results")
   if st.session_state.results_ready:
     with col3:
-      pass
+      st.write(st.session_state["query_execution"].get_results())
