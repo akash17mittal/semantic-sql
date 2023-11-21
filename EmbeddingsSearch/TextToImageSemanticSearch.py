@@ -103,6 +103,12 @@ class TextToImageSemanticSearcher:
         above_threshold = np.where(scores > score_threshold)
         return image_ids[above_threshold]
     
+    def find_images_above_percentile(self, query, percentile):
+        image_ids, scores = self.generate_all_image_scores(query)
+        score_threshold = np.percentile(scores, percentile*100)
+        above_threshold = np.where(scores > score_threshold)
+        return image_ids[above_threshold]
+    
     def sample_images_at_percentile(self, query, percentile=1, k=1):
         """
         Retrieves k sample images around the specified percentile from an embedding space.
