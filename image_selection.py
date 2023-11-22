@@ -29,10 +29,10 @@ class ImageSelection:
     print(self.satisfied_ids)
     return len(self.image_scores) > 1
 
-  def _get_image_path_from_id(self, id):
+  def get_image_from_id(self, id):
     return self.searcher.get_images_from_ids([int(id)])[0]
 
   def get_next_image(self):
     self.curr_image_index = int(self.image_scores.shape[0] * 0.5)
     image_to_choose = self.image_scores.iloc[self.curr_image_index]["id"]
-    return self._get_image_path_from_id(image_to_choose)
+    return self.get_image_from_id(image_to_choose)
