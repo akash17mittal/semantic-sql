@@ -2,6 +2,10 @@
 SQL queries that support semantic predicates as well
 
 ## Setup
+- Clone this repository **RECURSIVELY**. It has a submodule.
+```bash
+git clone --recursive git@github.com:akash17mittal/sqlglot.git
+```
 - Download the data [Google Drive Link](https://drive.google.com/file/d/1Z14mnJI4ANrylNDpp65N8RbGgZ-eA7IY/view?usp=sharing)
 - Unzip the data and keep it in the project directory
 - Install the requirements
