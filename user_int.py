@@ -47,7 +47,7 @@ if __name__ == '__main__':
     st.session_state["results_ready"] = False
 
   if "curr_query" not in st.session_state:
-    st.session_state["curr_query"] = "SELECT * from objects WHERE class_name='car' SEMANTIC 'red car'"
+    st.session_state["curr_query"] = "SELECT DISTINCT id from objects WHERE class_name='car' SEMANTIC 'red car'"
 
   with col1:
     col1.header("Query the Data")

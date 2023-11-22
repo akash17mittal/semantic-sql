@@ -41,4 +41,4 @@ class QueryExecution:
       return self.results_df
     else:
       satisfied_image_ids = self.img_selection.satisfied_ids
-      return self.results_df.set_index("id", drop=True).loc[satisfied_image_ids["id"].values].reset_index()
+      return satisfied_image_ids.merge(self.results_df, on="id").sort_values(by="score", ascending=True)

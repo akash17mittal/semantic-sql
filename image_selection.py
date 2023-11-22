@@ -19,13 +19,14 @@ class ImageSelection:
     print("Total Satisfied - ", len(self.satisfied_ids))
     print("*" * 15)
     if passes_criterion:
-      self.satisfied_ids = pd.concat([self.satisfied_ids, self.image_scores.iloc[self.curr_image_index:]])
+      self.satisfied_ids = pd.concat([self.image_scores.iloc[self.curr_image_index:], self.satisfied_ids])
       self.image_scores = self.image_scores.iloc[:self.curr_image_index]
     else:
       self.image_scores = self.image_scores.iloc[self.curr_image_index:]
     print("Total Images to Decide - ", len(self.image_scores))
     print("Total Satisfied - ", len(self.satisfied_ids))
     # TODO: better termination condition
+    print(self.satisfied_ids)
     return len(self.image_scores) > 1
 
   def _get_image_path_from_id(self, id):
