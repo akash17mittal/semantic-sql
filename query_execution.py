@@ -37,4 +37,8 @@ class QueryExecution:
         lambda conn: pd.read_sql(text(self.query.base_query_without_semantic), conn))
 
   def get_results(self):
-    return self.results_df
+    if self.execution_complete:
+      return self.results_df
+    else:
+      satisfied_image_ids = self.img_selection.satisfied_ids
+      return self.results_df.set_index("id", drop=True).loc[satisfied_image_ids["id"].values].reset_index()

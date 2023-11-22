@@ -25,7 +25,8 @@ if __name__ == '__main__':
     base_table_setup = DBTableSetup(f"{DB_URL}/{DB_NAME}")
     d = pd.read_csv(selectedData)
     base_table_setup.insert_blob_data("objects", d, ["id", "object_id"])
-    create_and_save_faiss_index_with_ids("data/embeddings-instances.pt", "data/imageIds-instances.pt", index_path="data/index", ids_save_path="data/index_ids.npy")
+    create_and_save_faiss_index_with_ids("data/embeddings-instances.pt", "data/imageIds-instances.pt",
+                                         index_path="data/index", ids_save_path="data/index_ids.npy")
 
   if st.sidebar.button("Reset Database", key="db_reset"):
     # delete everything in database
@@ -62,22 +63,25 @@ if __name__ == '__main__':
   with col2:
     col2.header("User in the loop feedback")
 
-
   if st.session_state.curr_executing:
     with col2:
       if not st.session_state["query_execution"].execution_complete:
-        print("Rerendeded", "+"*20)
+        print("Rerendeded", "+" * 20)
         image_for_user_feedback = st.session_state["query_execution"].img_selection.get_next_image()
         if image_for_user_feedback:
           st.image(image_for_user_feedback, use_column_width=True)
           col_n_1, col_n_2 = st.columns([1, 1])
           with col_n_1:
             if st.button("Satisfies?", key="yes", use_container_width=True):
-              st.session_state["query_execution"].img_selection.update_user_feedback(True)
+              v = st.session_state["query_execution"].img_selection.update_user_feedback(True)
+              st.session_state.curr_executing = v
+              st.session_state.results_ready = not v
               st.rerun()
           with col_n_2:
             if st.button("Does NOT Satisfy?", key="no", use_container_width=True):
-              st.session_state["query_execution"].img_selection.update_user_feedback(False)
+              v = st.session_state["query_execution"].img_selection.update_user_feedback(False)
+              st.session_state.curr_executing = v
+              st.session_state.results_ready = not v
               st.rerun()
 
   with col3:

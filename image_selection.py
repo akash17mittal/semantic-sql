@@ -25,6 +25,8 @@ class ImageSelection:
       self.image_scores = self.image_scores.iloc[self.curr_image_index:]
     print("Total Images to Decide - ", len(self.image_scores))
     print("Total Satisfied - ", len(self.satisfied_ids))
+    # TODO: better termination condition
+    return len(self.image_scores) > 1
 
   def _get_image_path_from_id(self, id):
     return self.searcher.get_images_from_ids([int(id)])[0]
