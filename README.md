@@ -44,3 +44,10 @@ FROM objects
 WHERE class_name='car' AND x2>250 AND y2 > 200
 SEMANTIC 'red car'
 ```
+- Images having both plane and women
+```sql
+SELECT DISTINCT id from objects WHERE class_name='person' 
+INTERSECT
+SELECT DISTINCT id from objects WHERE class_name='airplane' 
+SEMANTIC 'women'
+```
