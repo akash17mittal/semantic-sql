@@ -28,7 +28,7 @@ if __name__ == '__main__':
     create_and_save_faiss_index_with_ids("data/embeddings-instances.pt", "data/imageIds-instances.pt",
                                          index_path="data/index", ids_save_path="data/index_ids.npy")
 
-  if st.sidebar.button("Reset Database", key="db_reset"):
+  if st.sidebar.button("Reset DB", key="db_reset"):
     # delete everything in database
     os.remove(DB_NAME)
     os.remove("data/index")
