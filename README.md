@@ -28,11 +28,19 @@ This command starts the semantic-sql at the following address http://localhost:8
 - **Results:** At the end, results are shown as a pandas dataframe along with the top-3 image matches.
 
 ### Example SQL Queries
+- Images containing exact 2 people and men wearing suit.
 ```sql
 SELECT id, COUNT(*) as c
 FROM objects
 WHERE class_name='person'
 GROUP BY id
 HAVING c = 2
-SEMANTIC 'married couple'
+SEMANTIC 'men in suit'
+```
+- Images having red car in the bottom right corner.
+```sql
+SELECT DISTINCT id
+FROM objects
+WHERE class_name='car' AND x2>250 AND y2 > 200
+SEMANTIC 'red car'
 ```
