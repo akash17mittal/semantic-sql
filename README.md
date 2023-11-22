@@ -17,6 +17,12 @@ This command starts the semantic-sql at the following address http://localhost:8
 - Click **Setup DB** button to create and populate the database table and build the vector index. Wait for sometime, this may take upto ~30 seconds. This step is only required for the first time. You don't need to run this again ever in the future unless you click **Reset DB**
 - Every time, you want to run a query, click **New Query** button.
 - Type in the __sql__ query and click **Execute Query**
+
+### Features
+- **SQL Expansion:** In addition to the standard SQL syntax, user can specify SEMANTIC predicate at the end of the sql query as shown in the example queries below.
+- **Human in Loop Feedback:** If a user specifies semantic predicate, the system will show the example images and user needs to provide feedback whether the shown image satisfies the semantic predicate or not. This step is required to choose the appropriate threshold.
+- **Results:** At the end, results are shown as a pandas dataframe along with the top-3 image matches.
+
 ### Example SQL Queries
 ```sql
 SELECT id, COUNT(*) as c
