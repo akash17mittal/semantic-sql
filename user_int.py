@@ -93,7 +93,5 @@ if __name__ == '__main__':
       if "id" in results.columns:
         for img_id in results.iloc[:3]["id"]:
           image_id = str(int(img_id)).zfill(12)
-          # get the image path
           image_path = f'http://images.cocodataset.org/train2017/{image_id}.jpg'
-          # image = Image.open(BytesIO(requests.get(image_path).content))
           st.image(image_path)
