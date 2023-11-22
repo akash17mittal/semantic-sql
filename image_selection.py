@@ -1,8 +1,5 @@
 import pandas as pd
 from text_to_image_semantic_search import TextToImageSemanticSearcher
-import requests
-from io import BytesIO
-from PIL import Image
 
 
 class ImageSelection:
@@ -20,7 +17,7 @@ class ImageSelection:
   def update_user_feedback(self, passes_criterion):
     print("Total Images to Decide - ", len(self.image_scores))
     print("Total Satisfied - ", len(self.satisfied_ids))
-    print("*"*15)
+    print("*" * 15)
     if passes_criterion:
       self.satisfied_ids = pd.concat([self.satisfied_ids, self.image_scores.iloc[self.curr_image_index:]])
       self.image_scores = self.image_scores.iloc[:self.curr_image_index]
