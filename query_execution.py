@@ -1,7 +1,6 @@
 from query import Query
 from constants import *
 from image_selection import ImageSelection
-from text_to_image_semantic_search import TextToImageSemanticSearcher
 from sqlalchemy.sql import text
 
 import asyncio
@@ -20,15 +19,14 @@ class QueryExecution:
 
     try:
       loop = asyncio.get_event_loop()
-    except Exception as e:
+    except Exception:
       loop = asyncio.new_event_loop()
       asyncio.set_event_loop(loop)
     loop.run_until_complete(self._execute_base_query())
     loop.close()
 
     if self.query.semantic_predicate is not None:
-      self.img_selection = ImageSelection()
-      self.searcher = TextToImageSemanticSearcher(index_path='data/index', ids_path="data/index_ids.npy")
+      self.img_selection = ImageSelection(self.results_df, self.query.semantic_predicate)
       self.execution_complete = False
     else:
       self.execution_complete = True

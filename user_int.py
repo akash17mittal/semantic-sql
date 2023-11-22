@@ -46,7 +46,7 @@ if __name__ == '__main__':
     st.session_state["results_ready"] = False
 
   if "curr_query" not in st.session_state:
-    st.session_state["curr_query"] = "SELECT * from objects SEMANTIC 'red car'"
+    st.session_state["curr_query"] = "SELECT * from objects WHERE class_name='car' SEMANTIC 'red car'"
 
   with col1:
     col1.header("Query the Data")
@@ -62,19 +62,23 @@ if __name__ == '__main__':
   with col2:
     col2.header("User in the loop feedback")
 
+
   if st.session_state.curr_executing:
     with col2:
       if not st.session_state["query_execution"].execution_complete:
+        print("Rerendeded", "+"*20)
         image_for_user_feedback = st.session_state["query_execution"].img_selection.get_next_image()
         if image_for_user_feedback:
           st.image(image_for_user_feedback, use_column_width=True)
           col_n_1, col_n_2 = st.columns([1, 1])
           with col_n_1:
             if st.button("Satisfies?", key="yes", use_container_width=True):
-              st.session_state["query_execution"].img_selection.update_user_feedback()
+              st.session_state["query_execution"].img_selection.update_user_feedback(True)
+              st.rerun()
           with col_n_2:
             if st.button("Does NOT Satisfy?", key="no", use_container_width=True):
-              st.session_state["query_execution"].img_selection.update_user_feedback()
+              st.session_state["query_execution"].img_selection.update_user_feedback(False)
+              st.rerun()
 
   with col3:
     col3.header("Query Results")
