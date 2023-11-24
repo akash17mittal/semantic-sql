@@ -50,25 +50,25 @@ SELECT id FROM (SELECT id, COUNT(*) as c FROM objects WHERE class_name='person' 
 SELECT id FROM (SELECT id, COUNT(*) as c FROM objects WHERE class_name='person' GROUP BY id HAVING c = 2 )INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'tennis racket' SEMANTIC 'persons play tennis racket',Images have two persons playing tennis racket
 SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'bottle' SEMANTIC 'women',Images have women and bottle
 SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'bottle' SEMANTIC 'kid',Images have kid and bottle
-SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'bottle' SEMANTIC 'happy man',Images have kid and bottle
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'bottle' SEMANTIC 'happy man',Images have happy man and bottle
 SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'wine glass' SEMANTIC 'women',Images have women and wine glass
 SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'wine glass' SEMANTIC 'kid',Images have kid and wine glass
-SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'wine glass' SEMANTIC 'happy man',Images have kid and wine glass
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'wine glass' SEMANTIC 'happy man',Images have happy man and wine glass
 SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'cup' SEMANTIC 'women',Images have women and cup
 SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'cup' SEMANTIC 'kid',Images have kid and cup
-SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'cup' SEMANTIC 'happy man',Images have kid and cup
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'cup' SEMANTIC 'happy man',Images have happy man and cup
 SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'fork' SEMANTIC 'women',Images have women and fork
 SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'fork' SEMANTIC 'kid',Images have kid and fork
-SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'fork' SEMANTIC 'happy man',Images have kid and fork
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'fork' SEMANTIC 'happy man',Images have happy man and fork
 SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'knife' SEMANTIC 'women',Images have women and knife
 SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'knife' SEMANTIC 'kid',Images have kid and knife
-SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'knife' SEMANTIC 'happy man',Images have kid and knife
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'knife' SEMANTIC 'happy man',Images have happy man and knife
 SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'spoon' SEMANTIC 'women',Images have women and spoon
 SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'spoon' SEMANTIC 'kid',Images have kid and spoon
-SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'spoon' SEMANTIC 'happy man',Images have kid and spoon
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'spoon' SEMANTIC 'happy man',Images have happy man and spoon
 SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'bowl' SEMANTIC 'women',Images have women and bowl
 SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'bowl' SEMANTIC 'kid',Images have kid and bowl
-SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'bowl' SEMANTIC 'happy man',Images have kid and bowl
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'bowl' SEMANTIC 'happy man',Images have happy man and bowl
 SELECT DISTINCT id from objects WHERE class_name= 'bird' SEMANTIC 'sunny day',Images have  sunny day and  bird
 SELECT DISTINCT id from objects WHERE class_name= 'bird' SEMANTIC 'cloudy day',Images have  cloudy day and  bird
 SELECT DISTINCT id from objects WHERE class_name= 'cat' SEMANTIC 'sunny day',Images have  sunny day and  cat
