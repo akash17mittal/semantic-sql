@@ -1,4 +1,4 @@
-image_filename,SQL+semantic query,text query
+SQL+semantic query,text query
 SELECT DISTINCT id from objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'banana' SEMANTIC 'person eat banana',Images have person eating banana
 SELECT DISTINCT id from objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'apple' SEMANTIC 'person eat apple',Images have person eating apple
 SELECT DISTINCT id from objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'sandwich' SEMANTIC 'person eat sandwich',Images have person eating sandwich
