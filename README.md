@@ -51,3 +51,37 @@ INTERSECT
 SELECT DISTINCT id from objects WHERE class_name='airplane' 
 SEMANTIC 'women'
 ```
+- Images with one person with umbrella and two cars
+```sql
+SELECT id
+FROM
+  (SELECT id,
+          COUNT(*) AS c
+   FROM objects
+   WHERE class_name='person'
+   GROUP BY id
+   HAVING c = 1) INTERSECT
+SELECT DISTINCT id
+FROM objects
+WHERE class_name='umbrella' INTERSECT
+  SELECT id
+  FROM
+    (SELECT id,
+            COUNT(*) AS c
+     FROM objects
+     WHERE class_name='car'
+     GROUP BY id
+     HAVING c = 2)
+```
+- Images with black cat on the top left corner
+```sql
+SELECT 
+  DISTINCT id 
+from 
+  objects 
+WHERE 
+  class_name = 'cat' 
+  AND x2 < 250 
+  AND y2 < 250 
+SEMANTIC 'black cat'
+```
