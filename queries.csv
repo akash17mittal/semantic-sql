@@ -1,0 +1,91 @@
+image_filename,SQL+semantic query,text query
+SELECT DISTINCT id from objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'banana' SEMANTIC 'person eat banana',Images have person eating banana
+SELECT DISTINCT id from objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'apple' SEMANTIC 'person eat apple',Images have person eating apple
+SELECT DISTINCT id from objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'sandwich' SEMANTIC 'person eat sandwich',Images have person eating sandwich
+SELECT DISTINCT id from objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'orange' SEMANTIC 'person eat orange',Images have person eating orange
+SELECT DISTINCT id from objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'broccoli' SEMANTIC 'person eat broccoli',Images have person eating broccoli
+SELECT DISTINCT id from objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'carrot' SEMANTIC 'person eat carrot',Images have person eating carrot
+SELECT DISTINCT id from objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'hot dog' SEMANTIC 'person eat hot dog',Images have person eating hot dog
+SELECT DISTINCT id from objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'pizza' SEMANTIC 'person eat pizza',Images have person eating pizza
+SELECT DISTINCT id FROM objects WHERE class_name='bicycle' AND  y2 > 200 SEMANTIC 'red bicycle',Images having red bicycle in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='bicycle' AND  y2 > 200 SEMANTIC 'blue bicycle',Images having blue bicycle in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='bicycle' AND  y2 > 200 SEMANTIC 'yellow bicycle',Images having yellow bicycle in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='bicycle' AND  y2 > 200 SEMANTIC 'green bicycle',Images having green bicycle in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='car' AND  y2 > 200 SEMANTIC 'red car',Images having red car in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='car' AND  y2 > 200 SEMANTIC 'blue car',Images having blue car in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='car' AND  y2 > 200 SEMANTIC 'yellow car',Images having yellow car in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='car' AND  y2 > 200 SEMANTIC 'green car',Images having green car in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='motorcycle' AND  y2 > 200 SEMANTIC 'red motorcycle',Images having red motorcycle in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='motorcycle' AND  y2 > 200 SEMANTIC 'blue motorcycle',Images having blue motorcycle in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='motorcycle' AND  y2 > 200 SEMANTIC 'yellow motorcycle',Images having yellow motorcycle in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='motorcycle' AND  y2 > 200 SEMANTIC 'green motorcycle',Images having green motorcycle in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='airplane' AND  y2 > 200 SEMANTIC 'red airplane',Images having red airplane in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='airplane' AND  y2 > 200 SEMANTIC 'blue airplane',Images having blue airplane in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='airplane' AND  y2 > 200 SEMANTIC 'yellow airplane',Images having yellow airplane in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='airplane' AND  y2 > 200 SEMANTIC 'green airplane',Images having green airplane in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='bus' AND  y2 > 200 SEMANTIC 'red bus',Images having red bus in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='bus' AND  y2 > 200 SEMANTIC 'blue bus',Images having blue bus in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='bus' AND  y2 > 200 SEMANTIC 'yellow bus',Images having yellow bus in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='bus' AND  y2 > 200 SEMANTIC 'green bus',Images having green bus in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='train' AND  y2 > 200 SEMANTIC 'red train',Images having red train in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='train' AND  y2 > 200 SEMANTIC 'blue train',Images having blue train in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='train' AND  y2 > 200 SEMANTIC 'yellow train',Images having yellow train in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='train' AND  y2 > 200 SEMANTIC 'green train',Images having green train in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='truck' AND  y2 > 200 SEMANTIC 'red truck',Images having red truck in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='truck' AND  y2 > 200 SEMANTIC 'blue truck',Images having blue truck in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='truck' AND  y2 > 200 SEMANTIC 'yellow truck',Images having yellow truck in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='truck' AND  y2 > 200 SEMANTIC 'green truck',Images having green truck in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='boat' AND  y2 > 200 SEMANTIC 'red boat',Images having red boat in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='boat' AND  y2 > 200 SEMANTIC 'blue boat',Images having blue boat in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='boat' AND  y2 > 200 SEMANTIC 'yellow boat',Images having yellow boat in the bottom corner
+SELECT DISTINCT id FROM objects WHERE class_name='boat' AND  y2 > 200 SEMANTIC 'green boat',Images having green boat in the bottom corner
+SELECT id FROM (SELECT id, COUNT(*) as c FROM objects WHERE class_name='person' GROUP BY id HAVING c = 2 )INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'skis' SEMANTIC 'persons play skis',Images have two persons playing skis
+SELECT id FROM (SELECT id, COUNT(*) as c FROM objects WHERE class_name='person' GROUP BY id HAVING c = 2 )INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'snowboard' SEMANTIC 'persons play snowboard',Images have two persons playing snowboard
+SELECT id FROM (SELECT id, COUNT(*) as c FROM objects WHERE class_name='person' GROUP BY id HAVING c = 2 )INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'sports ball' SEMANTIC 'persons play sports ball',Images have two persons playing sports ball
+SELECT id FROM (SELECT id, COUNT(*) as c FROM objects WHERE class_name='person' GROUP BY id HAVING c = 2 )INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'kite' SEMANTIC 'persons play kite',Images have two persons playing kite
+SELECT id FROM (SELECT id, COUNT(*) as c FROM objects WHERE class_name='person' GROUP BY id HAVING c = 2 )INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'baseball bat' SEMANTIC 'persons play baseball bat',Images have two persons playing baseball bat
+SELECT id FROM (SELECT id, COUNT(*) as c FROM objects WHERE class_name='person' GROUP BY id HAVING c = 2 )INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'baseball glove' SEMANTIC 'persons play baseball glove',Images have two persons playing baseball glove
+SELECT id FROM (SELECT id, COUNT(*) as c FROM objects WHERE class_name='person' GROUP BY id HAVING c = 2 )INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'skateboard' SEMANTIC 'persons play skateboard',Images have two persons playing skateboard
+SELECT id FROM (SELECT id, COUNT(*) as c FROM objects WHERE class_name='person' GROUP BY id HAVING c = 2 )INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'surfboard' SEMANTIC 'persons play surfboard',Images have two persons playing surfboard
+SELECT id FROM (SELECT id, COUNT(*) as c FROM objects WHERE class_name='person' GROUP BY id HAVING c = 2 )INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'tennis racket' SEMANTIC 'persons play tennis racket',Images have two persons playing tennis racket
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'bottle' SEMANTIC 'women',Images have women and bottle
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'bottle' SEMANTIC 'kid',Images have kid and bottle
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'bottle' SEMANTIC 'happy man',Images have kid and bottle
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'wine glass' SEMANTIC 'women',Images have women and wine glass
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'wine glass' SEMANTIC 'kid',Images have kid and wine glass
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'wine glass' SEMANTIC 'happy man',Images have kid and wine glass
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'cup' SEMANTIC 'women',Images have women and cup
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'cup' SEMANTIC 'kid',Images have kid and cup
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'cup' SEMANTIC 'happy man',Images have kid and cup
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'fork' SEMANTIC 'women',Images have women and fork
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'fork' SEMANTIC 'kid',Images have kid and fork
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'fork' SEMANTIC 'happy man',Images have kid and fork
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'knife' SEMANTIC 'women',Images have women and knife
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'knife' SEMANTIC 'kid',Images have kid and knife
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'knife' SEMANTIC 'happy man',Images have kid and knife
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'spoon' SEMANTIC 'women',Images have women and spoon
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'spoon' SEMANTIC 'kid',Images have kid and spoon
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'spoon' SEMANTIC 'happy man',Images have kid and spoon
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'bowl' SEMANTIC 'women',Images have women and bowl
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'bowl' SEMANTIC 'kid',Images have kid and bowl
+SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'bowl' SEMANTIC 'happy man',Images have kid and bowl
+SELECT DISTINCT id from objects WHERE class_name= 'bird' SEMANTIC 'sunny day',Images have  sunny day and  bird
+SELECT DISTINCT id from objects WHERE class_name= 'bird' SEMANTIC 'cloudy day',Images have  cloudy day and  bird
+SELECT DISTINCT id from objects WHERE class_name= 'cat' SEMANTIC 'sunny day',Images have  sunny day and  cat
+SELECT DISTINCT id from objects WHERE class_name= 'cat' SEMANTIC 'cloudy day',Images have  cloudy day and  cat
+SELECT DISTINCT id from objects WHERE class_name= 'dog' SEMANTIC 'sunny day',Images have  sunny day and  dog
+SELECT DISTINCT id from objects WHERE class_name= 'dog' SEMANTIC 'cloudy day',Images have  cloudy day and  dog
+SELECT DISTINCT id from objects WHERE class_name= 'horse' SEMANTIC 'sunny day',Images have  sunny day and  horse
+SELECT DISTINCT id from objects WHERE class_name= 'horse' SEMANTIC 'cloudy day',Images have  cloudy day and  horse
+SELECT DISTINCT id from objects WHERE class_name= 'sheep' SEMANTIC 'sunny day',Images have  sunny day and  sheep
+SELECT DISTINCT id from objects WHERE class_name= 'sheep' SEMANTIC 'cloudy day',Images have  cloudy day and  sheep
+SELECT DISTINCT id from objects WHERE class_name= 'cow' SEMANTIC 'sunny day',Images have  sunny day and  cow
+SELECT DISTINCT id from objects WHERE class_name= 'cow' SEMANTIC 'cloudy day',Images have  cloudy day and  cow
+SELECT DISTINCT id from objects WHERE class_name= 'elephant' SEMANTIC 'sunny day',Images have  sunny day and  elephant
+SELECT DISTINCT id from objects WHERE class_name= 'elephant' SEMANTIC 'cloudy day',Images have  cloudy day and  elephant
+SELECT DISTINCT id from objects WHERE class_name= 'bear' SEMANTIC 'sunny day',Images have  sunny day and  bear
+SELECT DISTINCT id from objects WHERE class_name= 'bear' SEMANTIC 'cloudy day',Images have  cloudy day and  bear
+SELECT DISTINCT id from objects WHERE class_name= 'zebra' SEMANTIC 'sunny day',Images have  sunny day and  zebra
+SELECT DISTINCT id from objects WHERE class_name= 'zebra' SEMANTIC 'cloudy day',Images have  cloudy day and  zebra
+SELECT DISTINCT id from objects WHERE class_name= 'giraffe' SEMANTIC 'sunny day',Images have  sunny day and  giraffe
+SELECT DISTINCT id from objects WHERE class_name= 'giraffe' SEMANTIC 'cloudy day',Images have  cloudy day and  giraffe
