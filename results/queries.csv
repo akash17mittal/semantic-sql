@@ -1,0 +1,6 @@
+id,semantic query,ssql query
+1,red car,SELECT DISTINCT id from objects WHERE class_name='car' SEMANTIC 'red car'
+2,eat apple,SELECT DISTINCT id from objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'apple' SEMANTIC 'person eat apple'
+3,women and bottle,SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'bottle' SEMANTIC 'women'
+4,play baseball, SELECT id FROM objects WHERE class_name='person' INTERSECT SELECT DISTINCT id from objects WHERE class_name= 'baseball bat' SEMANTIC 'play baseball'
+5,two men,SELECT id FROM (SELECT id, COUNT(*) as c FROM objects WHERE class_name='person' GROUP BY id HAVING c = 2 ) SEMANTIC 'men'
