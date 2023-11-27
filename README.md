@@ -1,5 +1,8 @@
 # Semantic SQL
 SQL queries that support semantic predicates as well
+<p align="center">
+  <img src="assets/ssql.png" style="width:550px;"/>
+</p>
 
 ## Setup
 - Clone this repository **RECURSIVELY**. It has a submodule.
