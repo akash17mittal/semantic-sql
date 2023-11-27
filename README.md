@@ -6,7 +6,7 @@ SQL queries that support semantic predicates as well
 ```bash
 git clone --recursive git@github.com:akash17mittal/semantic-sql.git
 ```
-- Download the data [Google Drive Link](https://drive.google.com/file/d/1Z14mnJI4ANrylNDpp65N8RbGgZ-eA7IY/view?usp=sharing)
+- Download the data [Google Drive Link](https://drive.google.com/file/d/1RFjTyfs7KhhowRByKyW9KABJUSVEID-S/view?usp=sharing)
 - Unzip the data and keep it in the project directory
 - Install the requirements
 ```python
