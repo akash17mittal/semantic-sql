@@ -72,6 +72,7 @@ WHERE class_name='umbrella' INTERSECT
      WHERE class_name='car'
      GROUP BY id
      HAVING c = 2)
+SEMANTIC 'women no kids'
 ```
 - Images with black cat on the top left corner
 ```sql
